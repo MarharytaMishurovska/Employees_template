@@ -2,12 +2,18 @@ import EmployeesListItem from "../emloyees-list-item/employees-list-item";
 
 import './employees-list.css';
 
-const EmployeesList = () => {
+const EmployeesList = ({data}) => {
+
+    const elements = data.map(item => {
+        return (
+            // <EmployeesListItem name={item.name} salary={item.salary} /> два варіанти запису
+            <EmployeesListItem {...item}/> // spread operator
+        )
+    })
+
     return (
         <ul className="app-list list-group">
-            <EmployeesListItem name="Harry P." salary={800}/>
-            <EmployeesListItem name="Anabel S." salary={3000}/>
-            <EmployeesListItem name="George N." salary={550}/>
+            {elements}
         </ul>
     )
 }
